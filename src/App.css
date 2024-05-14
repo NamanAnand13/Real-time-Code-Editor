@@ -27,12 +27,10 @@ footer {
 }
 
 footer a {
-  color: #FBC64D;
   color: #258BFA;
 }
 
-footer a:hover{
-  color :#258BFA;
+footer a:hover {
   color: #FBC64D;
 }
 
@@ -84,3 +82,14 @@ footer a:hover{
   margin-top: 20px;
 }
 
+.createNewBtn {
+  color: #FBC64D;
+  text-decoration: none;
+  border-bottom: 1px solid #FBC64D;
+  transition: all 0.3 ease-in-out;
+}
+
+.createNewBtn:hover {
+  color: #258BFA;
+  border-color: #258BFA;
+}
