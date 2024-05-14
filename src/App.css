@@ -65,14 +65,16 @@ footer a:hover {
   transition: all 0.3s ease-in-out;
 }
 
-.joinBtn {
+.joinBtn,
+.LeaveBtn {
   /* background-color: #FBC64D; */
   background-color: #258BFA;
   width: 100px;
   margin-left: auto;
 }
 
-.joinBtn:hover {
+.joinBtn:hover,
+.LeaveBtn:hover {
   /* background-color: #258BFA; */
   background-color: #FBC64D;
 }
@@ -92,4 +94,80 @@ footer a:hover {
 .createNewBtn:hover {
   color: #258BFA;
   border-color: #258BFA;
+}
+
+.mainWrap {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  /* height: 100vh; */
+}
+
+.aside {
+  background-color: #3c3c3c;
+  padding: 16px;
+  color: #d7d7d7;
+  display: flex;
+  flex-direction: column;
+}
+
+.asideInner {
+  flex: 1;
+}
+
+.userList {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.client {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+}
+
+.username {
+  margin-top: 10px;
+}
+
+.logo {
+  border-bottom: 1px solid #d7d7d7;
+  padding: auto;
+}
+
+.logoEditor {
+  height: 150px;
+}
+
+.editorWrap {
+  background-color: #cd1717;
+}
+
+.LeaveBtn {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.connected {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+
+/* .green {
+  height: 25px;
+  width: 25px;
+  background-color: green;
+  border-radius: 50%;
+} */
+
+.CodeMirror {
+  min-height: calc(100vh - 20px);
+  font-size: 20px;
+  line-height: 1.6;
+  padding-top: 20px;
 }
