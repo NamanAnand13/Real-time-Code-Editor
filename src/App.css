@@ -1,0 +1,86 @@
+.HomePageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d7d7d7;
+  height: 100vh;
+  width: 100vw;
+}
+
+.FormWrapper {
+  background: #4b4a4a;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+}
+
+.homePageLogo {
+  height: 120px;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+}
+
+footer a {
+  color: #FBC64D;
+  color: #258BFA;
+}
+
+footer a:hover{
+  color :#258BFA;
+  color: #FBC64D;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.mainLabel {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.inputBox {
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  margin-bottom: 14px;
+  background: #d7d7d7;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btn {
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.joinBtn {
+  /* background-color: #FBC64D; */
+  background-color: #258BFA;
+  width: 100px;
+  margin-left: auto;
+}
+
+.joinBtn:hover {
+  /* background-color: #258BFA; */
+  background-color: #FBC64D;
+}
+
+.createInfo {
+  margin: auto;
+  margin-top: 20px;
+}
+
