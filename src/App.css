@@ -60,6 +60,7 @@ footer a:hover {
   border-radius: 5px;
   outline: none;
   border: none;
+  font-weight: bold;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -144,6 +145,7 @@ footer a:hover {
 
 .editorWrap {
   background-color: #cd1717;
+  height: 100vh;
 }
 
 .LeaveBtn {
@@ -151,12 +153,12 @@ footer a:hover {
   width: 100%;
 }
 
-.connected {
+/* .connected {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   margin-bottom: 20px;
-}
+} */
 
 /* .green {
   height: 25px;

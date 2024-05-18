@@ -7,19 +7,19 @@ import 'codemirror/addon/edit/closetag';
 import 'codemirror/addon/edit/closebrackets';
 
 const Editor = () => {
+    async function init() {
+        Codemirror.fromTextArea(document.getElementById('realTimeEditor'), {
+            mode: { name: 'javascript', json: true },
+            theme: 'dracula',
+            autoCloseTags: true,
+            autoCloseBrackets: true,
+            lineNumbers: true,
+        })
+    }
     useEffect(() => {
-        async function init() {
-            Codemirror.fromTextArea(document.getElementById('realTimeEditor'), {
-                mode: { name: 'javascript', json: true },
-                theme: 'dracula',
-                autoCloseTags: true,
-                autoCloseBrackets: true,
-                lineNumbers: true,
-            })
-        }
         init();
     }, []);
-    return <textarea id="realTimeEditor"></textarea>;
+    return <textarea id='realTimeEditor'></textarea>;
 
 }
 
