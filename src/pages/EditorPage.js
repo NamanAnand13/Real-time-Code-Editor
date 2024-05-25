@@ -3,26 +3,63 @@ import Client from '../components/Client';
 import Editor from '../components/editor';
 import { initSocket } from '../socket';
 import ACTIONS from '../Actions';
-import { useLocation } from 'react-router-dom';
-
+import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const EditorPage = () => {
     const socketRef = useRef(null);
     const location = useLocation();
+    const reactNavigator = useNavigate();
+    const { roomId } = useParams(); // gets the roomId from the url / session
+    const [clients, setClients] = useState([]);
+
     useEffect(() => {
         const init = async () => {
             socketRef.current = await initSocket();
-            // socketRef.current.emit(ACTIONS.JOIN, {
-            //     roomId,
-            //     username: location.state?.username,
-            // });
+            socketRef.current.on('connect_error', (err) => handleError(err));
+            socketRef.current.on('connect_failed', (err) => handleError(err));
+
+            function handleError(err) {
+                console.log(err);
+                toast.error('Socket conenction failed, try again later');
+                reactNavigator('/');
+            }
+
+            socketRef.current.emit(ACTIONS.JOIN, {
+                roomId,
+                username: location.state?.username,
+            });
+
+            //Listening for new connections
+            socketRef.current.on(ACTIONS.JOINED, ({ clients, username, socketId }) => {
+                if (username !== location.state?.username) {
+                    toast.success(`${username} joined the room`);
+                }
+                console.log(`${username} joined`);
+                setClients(clients);
+            });
+
+            //Listening for disconnection
+            socketRef.current.on(ACTIONS.DISCONNECTED, ({ socketId, username }) => {
+                toast.success(`${username} left the room`);
+                setClients((prev) => {
+                    return prev.filter((client) => client.socketId !== socketId);
+                });
+            });
         }
-    }, [])
-    const [clients, setClients] = useState([
-        { socketId: 1, username: "naman a" },
-        // { socketId: 2, username: "hims jain" },
-        // { socketId: 3, username: "faiz" },
-    ]);
+        init();
+
+        return () => {
+            socketRef.current.off(ACTIONS.JOINED);
+            socketRef.current.off(ACTIONS.DISCONNECTED);
+            socketRef.current.disconnect();
+        }
+    }, []);
+
+    if (!location.state) {
+        return <Navigate to='/'></Navigate>
+    }
+
     return (
         <div className='mainWrap'>
             <div className='aside'>
@@ -43,7 +80,7 @@ const EditorPage = () => {
                 <button className='btn LeaveBtn'>Leave</button>
             </div>
             <div className='editorWrap'>
-                <Editor />
+                <Editor socketRef={socketRef} roomId={roomId} />
             </div>
         </div>
     )

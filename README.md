@@ -29,5 +29,5 @@ You can try out the Real-Time Code Editor by visiting the [demo page]().
 
 - Create or Enter (if you already have) a new rooom ID.
 - Enter your name.
--Use the code editor to write or edit your code. Changes will be synchronized in real time with other users.
--Share the ROOM ID with collaborators to invite them to edit the code with you.
+- Use the code editor to write or edit your code. Changes will be synchronized in real time with other users.
+- Share the ROOM ID with collaborators to invite them to edit the code with you.
