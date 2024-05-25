@@ -17,8 +17,6 @@
 
 .homePageLogo {
   height: 120px;
-  align-items: center;
-  justify-content: center;
 }
 
 footer {
@@ -135,6 +133,7 @@ footer a:hover {
 }
 
 .logo {
+  display: flex;
   border-bottom: 1px solid #d7d7d7;
   padding: auto;
 }

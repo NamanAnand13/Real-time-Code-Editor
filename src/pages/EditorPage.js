@@ -13,6 +13,20 @@ const EditorPage = () => {
     const { roomId } = useParams(); // gets the roomId from the url / session
     const [clients, setClients] = useState([]);
 
+    async function copyRoomId() {
+        try {
+            await navigator.clipboard.writeText(roomId);
+            toast.success("RoomId copied on clipboard successfully");
+        }
+        catch (err) {
+            toast.error("Error copying RoomId");
+            console.error(err);
+        }
+    }
+
+    function leaveRoom() {
+        reactNavigator('/');
+    }
     useEffect(() => {
         const init = async () => {
             socketRef.current = await initSocket();
@@ -76,8 +90,8 @@ const EditorPage = () => {
                         }
                     </div>
                 </div>
-                <button className='btn copyBtn'>Copy ROOM ID</button>
-                <button className='btn LeaveBtn'>Leave</button>
+                <button className='btn copyBtn' onClick={copyRoomId}>Copy ROOM ID</button>
+                <button className='btn LeaveBtn' onClick={leaveRoom}>Leave</button>
             </div>
             <div className='editorWrap'>
                 <Editor socketRef={socketRef} roomId={roomId} />
