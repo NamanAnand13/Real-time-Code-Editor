@@ -7,12 +7,12 @@ import 'codemirror/addon/edit/closetag';
 import 'codemirror/addon/edit/closebrackets';
 import ACTIONS from '../Actions';
 
-const Editor = ({ socketRef, roomId }) => {
+const Editor = ({ socketRef, roomId , onCodeChange}) => {
     console.log(socketRef.current);
     console.log(roomId);
     const editorRef = useRef(null);
     useEffect(() => {
-        async function init() {
+        function init() {
             editorRef.current = Codemirror.fromTextArea(document.getElementById('realTimeEditor'), {
                 mode: { name: 'javascript', json: true },
                 theme: 'dracula',
@@ -24,6 +24,7 @@ const Editor = ({ socketRef, roomId }) => {
             editorRef.current.on('change', (instance, changes) => {
                 const origin = changes.origin;
                 const code = instance.getValue();
+                onCodeChange(code);
                 if (origin !== 'setValue' && socketRef.current) {
                     socketRef.current.emit(ACTIONS.CODE_CHANGE, {
                         roomId,
